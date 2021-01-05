@@ -8,58 +8,40 @@ min30.volume = 0.08;
 
 let started = false;
 
-// console.group("min15=", min15);
-// console.log("min15=", min15);
-// console.table("min15=", min15);
-// console.dir("min15=", min15);
-// console.dir(min15);
-// min15.muted ? (min15.muted = false) : (min15.muted = true);
-// min15.muted = false;
-// min15.play();
-
 const timer15 = () => {
-  // console.log("start clicked=");
   const moment = new Date();
   const minutes = moment.getMinutes();
-  // console.log("minutes=", minutes);
   const lastMinutes = 15 - (minutes % 15);
-  // console.log("lastMinutes=", lastMinutes);
 
   switch (minutes) {
     case 00:
-      // console.log("minutes=", minutes);
       min15.play();
       setInterval(() => {
         min15.play();
       }, 15 * 60 * 1000);
       break;
     case 15:
-      // console.log("minutes=", minutes);
       min15.play();
       setInterval(() => {
         min15.play();
       }, 15 * 60 * 1000);
       break;
     case 30:
-      // console.log("minutes=", minutes);
       min15.play();
       setInterval(() => {
         min15.play();
       }, 15 * 60 * 1000);
     case 45:
-      // console.log("minutes=", minutes);
       min15.play();
       setInterval(() => {
         min15.play();
       }, 15 * 60 * 1000);
       break;
     default:
-      // console.log("minutes", minutes);
       new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.dir(min15);
           min15.play();
-          resolve("Успіх!"); // Є! Все пройшло добре!
+          resolve("Успіх!");
         }, lastMinutes * 60 * 1000);
       }).then((data) => {
         setInterval(() => {
@@ -71,63 +53,47 @@ const timer15 = () => {
 };
 
 const timer30 = () => {
-  // console.log("start clicked=");
   const moment = new Date();
   const minutes = moment.getMinutes();
-  // console.log("minutes=", minutes);
-  // const lastMinutes = 36 - (minutes % 30);
-  let lastMinutes;
-  console.log("minutes - 36=", minutes - 36);
-  minutes - 36 < 0
-    ? (lastMinutes = minutes + 36 - minutes)
-    : (lastMinutes = 36 + (minutes - 36));
+  let lastMinutes = 0;
 
-  console.log("lastMinutes=", lastMinutes);
-
-  switch (minutes) {
-    case 06:
-      // console.log("minutes=", minutes);
-      min30.play();
-      setInterval(() => {
-        min30.play();
-      }, 30 * 60 * 1000);
+  switch (true) {
+    case minutes < 06:
+      lastMinutes = 6 - minutes;
       break;
-    case 36:
-      // console.log("minutes=", minutes);
+    case minutes === 06:
       min30.play();
-      setInterval(() => {
-        min30.play();
-      }, 30 * 60 * 1000);
+      lastMinutes = 30;
       break;
-    default:
-      console.log("lastMinutes=", lastMinutes);
-      new Promise((resolve, reject) => {
-        setTimeout(() => {
-          // console.dir(min15);
-          min30.play();
-          resolve("Успіх!"); // Є! Все пройшло добре!
-        }, lastMinutes * 60 * 1000);
-      }).then((data) => {
-        setInterval(() => {
-          min30.play();
-        }, 30 * 60 * 1000);
-      });
+    case minutes < 36:
+      lastMinutes = 36 - minutes;
+      break;
+    case minutes === 36:
+      min30.play();
+      lastMinutes = 30;
+      break;
+    case minutes > 36:
+      lastMinutes = 30 - (minutes - 36);
       break;
   }
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      min30.play();
+      resolve("Успіх!");
+    }, lastMinutes * 60 * 1000);
+  }).then((data) => {
+    setInterval(() => {
+      min30.play();
+    }, 30 * 60 * 1000);
+  });
 };
 
 startBtn.onclick = (params) => {
-  console.dir(startBtn);
   if (!started) {
     startBtn.textContent = "Timers are started";
     started = true;
   }
-  // else {
-  //   startBtn.textContent = "Sart timers";
-  //   started = false;
-  // }
+
   timer15();
   timer30();
 };
-
-// window.addEventListener("load", min15play);
