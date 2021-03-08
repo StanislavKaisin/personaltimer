@@ -1,10 +1,22 @@
 const min15 = document.getElementById("min15");
+const min15Indicator = document.getElementById("min15Indicator");
+
 const min30 = document.getElementById("min30");
+const min30Indicator = document.getElementById("min30Indicator");
 
 const startBtn = document.getElementById("start");
 
 min15.volume = 0.08;
+min15Indicator.textContent = "Volume 15 minutes: " + min15.volume;
+min15.onvolumechange = () => {
+  min15Indicator.textContent = "Volume 15 minutes: " + min15.volume;
+};
+
 min30.volume = 0.08;
+min30Indicator.textContent = "Volume 30 minutes: " + min30.volume;
+min30.onvolumechange = () => {
+  min30Indicator.textContent = "Volume 30 minutes: " + min30.volume;
+};
 
 let started = false;
 
@@ -93,7 +105,6 @@ startBtn.onclick = (params) => {
     startBtn.textContent = "Timers are started";
     started = true;
   }
-
   timer15();
   timer30();
 };
