@@ -27,7 +27,7 @@ function startTimer(duration = 5 * 60, display = min5) {
 
 min5.onclick = () => {
   const duration = 5 * 60;
-  const countDownId = startTimer(duration);
+  const countDownId = startTimer(duration, min5);
   console.log("countDownId", countDownId);
   setTimeout(() => {
     clearInterval(countDownId);
@@ -38,11 +38,11 @@ min5.onclick = () => {
 
 min10.onclick = () => {
   const duration = 10 * 60;
-  const countDownId = startTimer(duration);
+  const countDownId = startTimer(duration, min10);
   console.log("countDownId", countDownId);
   setTimeout(() => {
     clearInterval(countDownId);
     min5Bell.play();
-    min5.textContent = "5 min timer";
+    min10.textContent = "10 min timer";
   }, duration * 1000);
 };
