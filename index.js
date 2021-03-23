@@ -108,3 +108,34 @@ startBtn.onclick = (params) => {
   timer15();
   timer30();
 };
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+const saveVolumeSettings = document.getElementById("save");
+const resetVolumeSettings = document.getElementById("resetVolumes");
+
+const saveVolumeToLocalStorage = () => {
+  try {
+    localStorage.setItem("min15Volume", min15.volume + "");
+    localStorage.setItem("min30Volume", min30.volume + "");
+  } catch (error) {
+    console.log(`error`, error);
+  }
+};
+
+saveVolumeSettings.onclick = saveVolumeToLocalStorage;
+
+resetVolumeSettings.onclick = () => {
+  min15.volume = 0.08;
+  min30.volume = 0.08;
+};
+
+function getVolumeFromLocalStorage() {
+  try {
+    min15.volume = +localStorage.getItem("min15Volume");
+    min30.volume = +localStorage.getItem("min30Volume");
+  } catch (error) {
+    console.log(`error`, error);
+  }
+}
+
+window.onload = getVolumeFromLocalStorage;
