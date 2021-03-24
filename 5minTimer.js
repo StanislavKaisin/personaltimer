@@ -32,7 +32,7 @@ min5.onclick = () => {
   setTimeout(() => {
     clearInterval(countDownId);
     min5Bell.play();
-    min5.textContent = "5 min timer";
+    min5.textContent = "05:00";
   }, duration * 1000);
 };
 
@@ -43,6 +43,6 @@ min10.onclick = () => {
   setTimeout(() => {
     clearInterval(countDownId);
     min5Bell.play();
-    min10.textContent = "10 min timer";
+    min10.textContent = "10:00";
   }, duration * 1000);
 };
