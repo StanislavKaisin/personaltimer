@@ -138,4 +138,13 @@ function getVolumeFromLocalStorage() {
   }
 }
 
-window.onload = getVolumeFromLocalStorage;
+window.addEventListener("load", async () => {
+  getVolumeFromLocalStorage();
+  if ("serviceWorker" in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register("./sw.js");
+    } catch (error) {
+      console.log(`error`, error);
+    }
+  }
+});
