@@ -10,15 +10,10 @@ const assetsUrls = [
   "Bells2.mp3",
 ];
 
-// self.addEventListener("install", async (event) => {
-//   const cache = await caches.open(staticCacheName);
-//   await cache.addAll(assetsUrls);
-// });
-
-self.addEventListener("install", (event) => {
-  const cache = caches.open(staticCacheName);
-  cache.addAll(assetsUrls);
-});
+self.addEventListener("install", async (event) => {
+  const cache = await caches.open(staticCacheName);
+  await cache.addAll(assetsUrls);
+ });
 
 self.addEventListener("fetch", (event) => {
   event.respondWith(cacheFirst(event.request));
