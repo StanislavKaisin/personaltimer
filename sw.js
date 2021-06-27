@@ -1,4 +1,4 @@
-const staticCacheName = "PersonalTimer-v2";
+const staticCacheName = "PersonalTimer-v4";
 
 const assetsUrls = [
   "index.html",
@@ -16,14 +16,22 @@ self.addEventListener("install", async (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(cacheFirst(event.request));
+  // event.respondWith(cacheFirst(event.request)).catch(() => {
+  //   caches.match(event.request);
+  // });
+  // console.log(`event`, event);
+  event.respondWith(
+    fetch(event.request).catch(function () {
+      return caches.match(event.request);
+    })
+  );
 });
 
 // cache strategy
 async function cacheFirst(request) {
   const cached = await caches.match(request);
   // return cached ?? (await fetch(request));
-  return cached;
+  return cached ?? (await fetch(request));
 }
 
 // remove old sw
