@@ -4,8 +4,8 @@
   "theme_color": "#3a1a86",
   "background_color": "#2196f3",
   "display": "standalone",
-  "scope": "personaltimer/",
-  "start_url": ".",
+  "scope": "/",
+  "start_url": "https://stanislavkaisin.github.io/personaltimer/",
   "icons": [
     {
       "src": "/icons/app-icon-96-96.svg",
