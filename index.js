@@ -140,6 +140,9 @@ function getVolumeFromLocalStorage() {
 
 window.addEventListener("load", async () => {
   getVolumeFromLocalStorage();
+  // keep window alive
+  getScreenLock();
+  // service worker
   if ("serviceWorker" in navigator) {
     try {
       const registration = await navigator.serviceWorker.register("./sw.js");
@@ -148,3 +151,21 @@ window.addEventListener("load", async () => {
     }
   }
 });
+
+// keep window alive+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function isScreenLockSupported() {
+  return "wakeLock" in navigator;
+}
+
+async function getScreenLock() {
+  if (isScreenLockSupported()) {
+    let screenLock;
+    try {
+      screenLock = await navigator.wakeLock.request("screen");
+      console.log(`screenLock`, screenLock);
+    } catch (err) {
+      console.log(err.name, err.message);
+    }
+    return screenLock;
+  }
+}
