@@ -8,27 +8,27 @@
   "start_url": "https://stanislavkaisin.github.io/personaltimer/",
   "icons": [
     {
-      "src": "/icons/app-icon-96-96.svg",
+      "src": "icons/app-icon-96-96.svg",
       "sizes": "96x96",
       "type": "image/svg+xml", "purpose": "any"
     },
     {
-      "src": "/icons/app-icon-144-144.svg",
+      "src": "icons/app-icon-144-144.svg",
       "sizes": "144x144",
       "type": "image/svg+xml", "purpose": "any"
     },
     {
-      "src": "/icons/app-icon-256-256.svg",
+      "src": "icons/app-icon-256-256.svg",
       "sizes": "256x256",
       "type": "image/svg+xml", "purpose": "any"
     },
     {
-      "src": "/icons/app-icon-512-512.svg",
+      "src": "icons/app-icon-512-512.svg",
       "sizes": "512x512",
       "type": "image/svg+xml", "purpose": "any"
     }, 
     {
-      "src": "/icons/app-icon-512-512.png",
+      "src": "icons/app-icon-512-512.png",
       "sizes": "512x512",
       "type": "image/png", "purpose": "any"
     }
